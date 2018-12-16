@@ -7,23 +7,18 @@ services:
       - ./data/dump:/dump
     command: mongod --smallfiles
   rocketchat:
-    image: rocket.chat
+    image: rocketchat/rocket.chat:latest
     expose:
       - 3000
+    env_file:
+      - .env
     networks:
       - default
       - reverse-proxy
     restart: always
     depends_on: 
       - db
-    environment:
-      - ROOT_URL=https://chat.nguyenantoine.com
-      - VIRTUAL_PORT=3000
-      - VIRTUAL_HOST=chat.nguyenantoine.com
-      - LETSENCRYPT_HOST=chat.nguyenantoine.com
-      - LETSENCRYPT_EMAIL=antoine.ngu@outlook.fr
 networks:
   reverse-proxy:
     external:
       name: reverse-proxy
-
