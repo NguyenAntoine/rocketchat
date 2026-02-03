@@ -1,17 +1,20 @@
-version: "2"
 services:
   db:
-    image: mongo
+    image: mongo:4
+    restart: always
     volumes:
       - ./data/runtime/db:/data/db
       - ./data/dump:/dump
-    command: mongod --smallfiles
+    command: mongod --smallfiles --replSet rs0 --oplogSize 128
   rocketchat:
-    image: rocketchat/rocket.chat:latest
+    image: rocketchat/rocket.chat:8
     expose:
       - 3000
-    env_file:
-      - .env
+    environment:
+      - MONGO_OPLOG_URL=mongodb://db:27017/local
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
     networks:
       - default
       - reverse-proxy

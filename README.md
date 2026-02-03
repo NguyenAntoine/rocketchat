@@ -1,5 +1,7 @@
 # RocketChat docker-compose
 
+Rocket.Chat 8 with MongoDB 4
+
 [Using RocketChat Docker Image](https://rocket.chat/docs/installation/docker-containers/#6-create-the-docker-composeyml-file--local-directories)
 
 ## Installation
