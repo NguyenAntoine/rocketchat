@@ -7,7 +7,7 @@ services:
       - ./data/dump:/dump
     command: mongod --smallfiles --replSet rs0 --oplogSize 128
   rocketchat:
-    image: rocketchat/rocket.chat:8
+    image: rocket.chat:8
     expose:
       - 3000
     environment:
