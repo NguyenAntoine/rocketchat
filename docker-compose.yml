@@ -23,5 +23,4 @@ services:
       - db
 networks:
   reverse-proxy:
-    external:
-      name: reverse-proxy
+    external: true
