@@ -1,6 +1,6 @@
 services:
   db:
-    image: mongo:4
+    image: mongo:8.2
     restart: always
     volumes:
       - ./data/runtime/db:/data/db
