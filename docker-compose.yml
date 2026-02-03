@@ -5,7 +5,7 @@ services:
     volumes:
       - ./data/runtime/db:/data/db
       - ./data/dump:/dump
-    command: mongod --smallfiles --replSet rs0 --oplogSize 128
+    command: mongod --replSet rs0 --oplogSize 128
   rocketchat:
     image: rocket.chat:8
     expose:
